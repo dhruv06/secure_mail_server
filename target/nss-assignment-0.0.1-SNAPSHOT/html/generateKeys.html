@@ -1,0 +1,16 @@
+<html>
+<head>
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_site_navbar"></nav>
+
+<div th:replace="snippets.html :: generate_key"></div>
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+<script th:src="@{/static/generateKeyPair.js}"/></script>
+</body>
+
+</html>

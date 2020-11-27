@@ -1,0 +1,201 @@
+ <head th:fragment="name_head">
+
+ 	<!-- Required meta tags -->
+ 	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 	<meta name="baseUrl" th:attr="content=${baseUrl}">
+
+ 	<script src="https://kit.fontawesome.com/c30beb553f.js" crossorigin="anonymous"></script>
+
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ 	<link rel="stylesheet" th:href="@{/static/app.css}">
+
+ </head>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light mb-1" th:fragment="name_site_navbar">
+    <!-- <a class="navbar-brand" th:href="@{/}">
+      <img th:src="@{/static/logo.jpg}" class="d-inline-block align-top" alt="">
+  </a> -->
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  	<span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+  	<ul class="navbar-nav">
+  		<li class="nav-item">
+  			<a class="nav-link" th:href="@{/site/Register}">Register</a>
+  		</li>
+  		<li class="nav-item">
+  			<a class="nav-link" th:href="@{/site/Compose}">Compose</a>
+  		</li>
+  		<li class="nav-item">
+  			<a class="nav-link" th:href="@{/site/Inbox}">Inbox</a>
+  		</li>
+  		<li class="nav-item">
+  			<a class="nav-link" th:href="@{/site/features}">Features</a>
+  		</li>
+  	</ul>
+
+      <!-- <ul class="navbar-nav ml-auto">
+       <li class="nav-item">
+        <a class="btn btn-primary" th:href="@{/site/login}">Login</a>
+      </li>
+  </ul> -->
+
+</div>
+</nav>
+
+
+<div th:fragment="generate_key">
+	<h3>Generate Key Pair</h3>
+
+	<!-- Top row with form-->
+	<div class="row">
+		<div class="col-12">
+			<form id="generate-key-form">
+				<div class="form-group row">
+					<label for="inputName" class="col-sm-2 col-form-label">Username</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="username" id="inputName" placeholder="Enter Username">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" name="email" id="inputEmail" placeholder="Enter Email">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputPassphrase" class="col-sm-2 col-form-label">Passphrase</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" name="passphrase" id="inputPassphrase" placeholder="Enter Passphrase">
+					</div>
+				</div>
+				<button type="button" class="btn btn-outline-primary" id="generate-key">Generate Key</button>
+			</form>
+		</div>
+		<a id="download_link1" download="private_key.asc" href=”” ></a>
+		<a id="download_link2" download="public_key.asc" href=”” ></a>
+		<a id="download_link3" download="revocation_cert.asc" href=”” ></a> 
+	</div> 
+
+</div>
+
+<div th:fragment="compose_mail">
+	<h3>Compose</h3>
+
+	<!-- Top row with form-->
+	<div class="row">
+		<div class="col-12">
+			<form id="compose-mail-form" enctype="multipart/form-data">
+				<div class="form-group row">
+					<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" name="email" id="inputEmail" placeholder="Enter Email">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputBody" class="col-sm-2 col-form-label">Body</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="body" id="inputBody" placeholder="Enter Body">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputFile" class="col-sm-2 col-form-label">Upload Your Private Key for Sign Email</label>
+					<div class="col-sm-10">
+						<input type="file" class="form-control" name="files[]" id="upload" >
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputPP" class="col-sm-2 col-form-label">Passphrase</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="passphrase" id="passphrase" placeholder="Enter Passphrase">
+					</div>
+				</div>
+				<button type="button" class="btn btn-outline-success" id="encrypt-data">Encrypt Data</button>
+			</form>
+		</div>
+	</div> 
+
+</div>
+
+
+
+
+<div th:fragment="login">
+	<h3>Login</h3>
+
+	<!-- Top row with form-->
+	<div class="row">
+		<div class="col-12">
+			<form id="login-form" >
+				<div class="form-group row">
+					<label for="loginemail" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="email1" id="inputEmail1" placeholder="Enter Email">
+					</div>
+				</div>	
+				
+				<button type="button" class="btn btn-outline-success" id="sendotp">Send OTP</button>
+			
+			<div id="otp_part" style="display:none">
+			<div class="form-group row">
+					<label for="loginemail" class="col-sm-2 col-form-label">Email</label>
+			<div class="col-sm-10">
+						<input type="text" class="form-control" name="otp" id="inputOtp" placeholder="Enter OTP">
+					</div>
+					</div>
+					
+					
+					<button type="button" class="btn btn-outline-success" id="login1">Login</button>
+			
+			</div>
+			</form>
+		</div>
+	</div> 
+
+</div>
+
+
+<div th:fragment="inbox_mail">
+	<h3>Inbox</h3>
+
+	<!-- Top row with form-->
+	<div class="row">
+		<div class="col-12">
+			<form id="inbox-mail-form">
+				<div class="form-group row">
+					<label for="pvtkey" class="col-sm-2 col-form-label">Private Key</label>
+					<div class="col-sm-10">
+						<textarea  rows="25" cols="50" id="pvtkey"></textarea>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputPassphrase" class="col-sm-2 col-form-label">Passphrase</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" name="passphrase" id="inputPassphrase" placeholder="Enter Passphrase">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="cipher" class="col-sm-2 col-form-label">Encrypted message</label>
+					<div class="col-sm-10">
+						<textarea  rows="25" cols="50" id="cipher"></textarea>
+					</div>
+				</div>
+				<p id="output"></p>
+				<button type="button" class="btn btn-outline-danger" id="decrypt-data">Decrypt Data</button>
+			</form>
+		</div>
+	</div> 
+
+</div>
+
+
+	<footer class="footer  mt-1" th:fragment="name_footer">
+		NSS 2020
+		&nbsp;
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		  <script th:src="@{/static/app.js}"/></script>
+		<script th:src="@{/static/openpgp.min.js}"/></script>
+	</footer>
+
